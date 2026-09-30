@@ -9,13 +9,13 @@ Der Viewer basiert auf [Pannellum](https://pannellum.org/) (MIT-Lizenz, liegt in
 
 ## Aufbau
 
-| Datei / Ordner        | Zweck                                                      |
+| Datei / Ordner       | Zweck                                                      |
 | --------------------- | ---------------------------------------------------------- |
-| `index.html`          | Übersicht aller Touren mit Link & Embed-Code               |
-| `view.html?tour=<id>` | Der eigentliche Rundgang (auch zum Einbetten per iframe)   |
-| `editor.html`         | Visueller Editor: Panoramen hinzufügen, Hotspots setzen    |
-| `tours/index.json`    | Liste der Touren                                           |
-| `tours/<id>/`         | `tour.json` + Panorama-Bilder einer Tour                   |
+| `public/index.html`   | Übersicht aller Touren mit Link & Embed-Code               |
+| `public/view.html`   | Der eigentliche Rundgang (auch zum Einbetten per iframe)   |
+| `public/editor.html` | Visueller Editor: Panoramen hinzufügen, Hotspots setzen    |
+| `public/tours/index.json` | Liste der Touren                                           |
+| `public/tours/<id>/` | `tour.json` + Panorama-Bilder einer Tour                   |
 
 ## Neue Tour anlegen
 
@@ -27,7 +27,7 @@ Der Viewer basiert auf [Pannellum](https://pannellum.org/) (MIT-Lizenz, liegt in
    Links zu anderen Szenen, Texte und URLs stellst du links in der Liste ein.
 5. Optional: **Aktuellen Blick als Start** setzen, **Als Startszene** markieren.
 6. **▶ Vorschau** testet den Rundgang inklusive Navigation.
-7. **Tour als ZIP exportieren** → ZIP im Projektordner entpacken (überschreibt
+7. **Tour als ZIP exportieren** → ZIP im Ordner `public/` entpacken (überschreibt
    `tours/index.json`), dann committen und pushen. Nach ~1 Minute ist die Tour online.
 
 Für reine Hotspot-Änderungen an einer bestehenden Tour reicht **Nur tour.json** –
@@ -36,7 +36,7 @@ die Datei einfach in `tours/<id>/` ersetzen.
 ## Lokal starten
 
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 8000 -d public
 # → http://localhost:8000
 ```
 
@@ -67,8 +67,8 @@ URL-Optionen für `view.html`:
 
 Die Seite läuft als Cloudflare Worker mit statischen Assets (`wrangler.jsonc`).
 Cloudflare ist mit dem GitHub-Repo verbunden: Jeder Push auf `main` wird automatisch
-per `npx wrangler deploy` veröffentlicht. Welche Dateien *nicht* hochgeladen werden,
-steht in `.assetsignore`. Limit: 25 MB pro Datei.
+per `npx wrangler deploy` veröffentlicht. Die Website selbst
+liegt alles unter `public/` – nur dieser Ordner wird veröffentlicht. Limit: 25 MB pro Datei.
 
 Eigene Domain (z. B. `rundgang.firma-a.de`): im Worker unter *Domains* hinterlegen.
 
@@ -82,7 +82,7 @@ pip install pillow numpy   # nur nötig, wenn die Tour Boden-Sticker hat
 python3 tools/import_kuula.py "https://kuula.co/share/collection/7M5G6" --company "Firma A"
 ```
 
-Die Tour landet in `tours/<id>/` und wird in `tours/index.json` eingetragen.
+Die Tour landet in `public/tours/<id>/` und wird in `tours/index.json` eingetragen.
 
 ## Tipps zur Bildgröße
 

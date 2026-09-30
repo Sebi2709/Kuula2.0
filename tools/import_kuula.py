@@ -23,7 +23,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent / 'public'
 MAX_SIZE = 8192
 IMAGE_CDN = 'https://files.kuula.io'
 MEDIA_CDN = 'https://media.kuula.io'

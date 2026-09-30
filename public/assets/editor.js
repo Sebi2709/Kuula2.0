@@ -453,7 +453,7 @@ async function exportZip() {
   if (state.loadedId && state.loadedId !== id) {
     toast(`Exportiert. Den alten Ordner tours/${state.loadedId}/ kannst du löschen.`);
   } else {
-    toast('Exportiert. ZIP im Projektordner entpacken und pushen.');
+    toast('Exportiert. ZIP im Ordner public/ entpacken und pushen.');
   }
   state.loadedId = id;
 }

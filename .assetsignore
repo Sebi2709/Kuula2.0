@@ -1,9 +1,0 @@
-.git
-.github
-.gitignore
-.assetsignore
-.nojekyll
-wrangler.jsonc
-tools
-README.md
-node_modules
