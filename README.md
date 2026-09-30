@@ -63,17 +63,14 @@ URL-Optionen für `view.html`:
 | `thumbs=1`       | Szenenleiste aufgeklappt starten         |
 | `autorotate=0`   | Auto-Rotation aus (oder z. B. `-3`)      |
 
-## Hosting (kostenlos)
+## Hosting (kostenlos, Cloudflare)
 
-**GitHub Pages** (Workflow liegt bei): Im Repo unter *Settings → Pages → Source*
-„GitHub Actions“ wählen. Jeder Push auf `main` veröffentlicht die Seite.
-Hinweis: Mit einem kostenlosen GitHub-Konto funktioniert Pages nur für
-**öffentliche** Repos.
+Die Seite läuft als Cloudflare Worker mit statischen Assets (`wrangler.jsonc`).
+Cloudflare ist mit dem GitHub-Repo verbunden: Jeder Push auf `main` wird automatisch
+per `npx wrangler deploy` veröffentlicht. Welche Dateien *nicht* hochgeladen werden,
+steht in `.assetsignore`. Limit: 25 MB pro Datei.
 
-**Cloudflare Pages** (auch mit privatem Repo): Repo verbinden, Build-Befehl leer
-lassen, Output-Verzeichnis `/`. Limit: 25 MB pro Datei – bei 8192×4096-JPEGs kein Problem.
-
-Eigene Domain (z. B. `rundgang.firma-a.de`) lässt sich bei beiden kostenlos hinterlegen.
+Eigene Domain (z. B. `rundgang.firma-a.de`): im Worker unter *Domains* hinterlegen.
 
 ## Touren aus Kuula importieren
 
