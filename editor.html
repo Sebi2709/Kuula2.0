@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Tour-Editor</title>
+  <link rel="stylesheet" href="vendor/pannellum/pannellum.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="editor">
+  <aside class="sidebar">
+    <h1>Tour-Editor</h1>
+    <p class="hint"><a href="./">← Zur Übersicht</a></p>
+
+    <section>
+      <h2>Tour</h2>
+      <div class="row">
+        <select id="tour-select"><option value="">Bestehende Tour laden …</option></select>
+        <button id="new-tour">Neue Tour</button>
+      </div>
+      <label for="tour-id">ID (Ordnername &amp; URL)</label>
+      <input id="tour-id" placeholder="z. B. firma-a-showroom">
+      <label for="tour-title">Titel</label>
+      <input id="tour-title" placeholder="Showroom">
+      <label for="tour-company">Firma</label>
+      <input id="tour-company" placeholder="Firma A">
+      <label for="tour-autorotate">Auto-Rotation (°/s, 0 = aus, negativ = nach links)</label>
+      <input id="tour-autorotate" type="number" step="0.5" value="-2">
+      <label><input id="tour-listed" type="checkbox" checked style="width:auto"> In der Übersicht anzeigen</label>
+    </section>
+
+    <section>
+      <h2>Szenen</h2>
+      <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+      <button id="add-scenes" class="primary">+ Panoramen hinzufügen</button>
+      <p class="hint">Equirektangulare 360°-Bilder (Seitenverhältnis 2:1). Bilder breiter als 8192 px werden automatisch verkleinert, damit sie auch auf Handys laden.</p>
+      <div id="scene-list" class="list" style="margin-top:10px"></div>
+    </section>
+
+    <section id="scene-panel" hidden>
+      <h2>Ausgewählte Szene</h2>
+      <label for="scene-title">Name</label>
+      <input id="scene-title">
+      <div class="row">
+        <button id="set-first">Als Startszene</button>
+        <button id="set-view">Aktuellen Blick als Start</button>
+        <button id="delete-scene" class="danger">Löschen</button>
+      </div>
+      <h2 style="margin-top:16px">Hotspots</h2>
+      <p class="hint">Oben im Bild „Szenen-Link“ oder „Info-Punkt“ wählen und dann ins Panorama klicken.</p>
+      <div id="hotspot-list" class="list" style="margin-top:8px"></div>
+    </section>
+
+    <section>
+      <h2>Speichern</h2>
+      <div class="row">
+        <button id="export-zip" class="primary">Tour als ZIP exportieren</button>
+        <button id="export-json">Nur tour.json</button>
+      </div>
+      <p class="hint">Das ZIP enthält <code>tours/&lt;id&gt;/</code> mit Bildern und <code>tour.json</code> sowie die aktualisierte <code>tours/index.json</code>. Einfach im Projektordner entpacken, committen und pushen – fertig.</p>
+    </section>
+  </aside>
+
+  <main class="stage" id="stage">
+    <div id="pano"></div>
+    <div class="placeholder" id="placeholder">Füge links ein Panorama hinzu oder lade eine bestehende Tour.</div>
+    <div class="toolbar" id="toolbar" hidden>
+      <button data-mode="scene">📍 Szenen-Link</button>
+      <button data-mode="info">ℹ️ Info-Punkt</button>
+      <button data-mode="preview">▶ Vorschau</button>
+    </div>
+    <div class="toast" id="toast"></div>
+  </main>
+
+  <script src="vendor/pannellum/pannellum.js"></script>
+  <script type="module" src="assets/editor.js"></script>
+</body>
+</html>

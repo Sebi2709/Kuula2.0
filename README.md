@@ -1,0 +1,86 @@
+# Kuula 2.0 – eigene 360°-Rundgänge
+
+Selbst gehostete Alternative zu Kuula: 360°-Panoramen als Rundgang mit Szenen-Links
+und Info-Punkten anzeigen – als rein statische Website, die kostenlos auf
+GitHub Pages, Cloudflare Pages oder Netlify läuft. Kein Server, keine Datenbank,
+kein Build-Schritt.
+
+Der Viewer basiert auf [Pannellum](https://pannellum.org/) (MIT-Lizenz, liegt in `vendor/`).
+
+## Aufbau
+
+| Datei / Ordner        | Zweck                                                      |
+| --------------------- | ---------------------------------------------------------- |
+| `index.html`          | Übersicht aller Touren mit Link & Embed-Code               |
+| `view.html?tour=<id>` | Der eigentliche Rundgang (auch zum Einbetten per iframe)   |
+| `editor.html`         | Visueller Editor: Panoramen hinzufügen, Hotspots setzen    |
+| `tours/index.json`    | Liste der Touren                                           |
+| `tours/<id>/`         | `tour.json` + Panorama-Bilder einer Tour                   |
+
+## Neue Tour anlegen
+
+1. Website öffnen (lokal oder online) → **Tour erstellen / bearbeiten**.
+2. Titel, Firma und ID (wird Teil der URL) eintragen.
+3. **Panoramen hinzufügen** – equirektangulare 360°-Bilder (2:1). Bilder über
+   8192 px Breite werden automatisch verkleinert, damit sie auch auf Handys laden.
+4. Szene auswählen, oben **Szenen-Link** oder **Info-Punkt** klicken und ins Bild klicken.
+   Links zu anderen Szenen, Texte und URLs stellst du links in der Liste ein.
+5. Optional: **Aktuellen Blick als Start** setzen, **Als Startszene** markieren.
+6. **▶ Vorschau** testet den Rundgang inklusive Navigation.
+7. **Tour als ZIP exportieren** → ZIP im Projektordner entpacken (überschreibt
+   `tours/index.json`), dann committen und pushen. Nach ~1 Minute ist die Tour online.
+
+Für reine Hotspot-Änderungen an einer bestehenden Tour reicht **Nur tour.json** –
+die Datei einfach in `tours/<id>/` ersetzen.
+
+## Lokal starten
+
+```bash
+python3 -m http.server 8000
+# → http://localhost:8000
+```
+
+(Ein Doppelklick auf die HTML-Datei reicht nicht, da der Browser dann `fetch` blockiert.)
+
+## Einbinden auf der Firmen-Website
+
+In der Übersicht auf **Embed-Code** klicken, oder:
+
+```html
+<iframe src="https://<deine-domain>/view.html?tour=firma-a-showroom"
+        width="100%" height="600" style="border:0"
+        allow="fullscreen; accelerometer; gyroscope" allowfullscreen loading="lazy"></iframe>
+```
+
+URL-Optionen für `view.html`:
+
+| Parameter        | Wirkung                                  |
+| ---------------- | ---------------------------------------- |
+| `tour=<id>`      | Welche Tour (Pflicht)                    |
+| `scene=<id>`     | Startszene (alternativ `#scene=<id>`)    |
+| `title=0`        | Titel oben ausblenden                    |
+| `nav=0`          | Szenenleiste unten ausblenden            |
+| `autorotate=0`   | Auto-Rotation aus (oder z. B. `-3`)      |
+
+## Hosting (kostenlos)
+
+**GitHub Pages** (Workflow liegt bei): Im Repo unter *Settings → Pages → Source*
+„GitHub Actions“ wählen. Jeder Push auf `main` veröffentlicht die Seite.
+Hinweis: Mit einem kostenlosen GitHub-Konto funktioniert Pages nur für
+**öffentliche** Repos.
+
+**Cloudflare Pages** (auch mit privatem Repo): Repo verbinden, Build-Befehl leer
+lassen, Output-Verzeichnis `/`. Limit: 25 MB pro Datei – bei 8192×4096-JPEGs kein Problem.
+
+Eigene Domain (z. B. `rundgang.firma-a.de`) lässt sich bei beiden kostenlos hinterlegen.
+
+## Panoramen aus Kuula holen
+
+In Kuula kannst du bei deinen Fotos das Original herunterladen. Die Hotspots musst
+du im Editor einmal neu setzen – das geht pro Szene in wenigen Minuten.
+
+## Tipps zur Bildgröße
+
+- Ideal: 8192×4096 px, JPEG-Qualität ~85 % → ca. 3–8 MB pro Panorama.
+- Größere Bilder bringen keine sichtbare Verbesserung, laden aber langsamer und
+  scheitern auf manchen Handys.
