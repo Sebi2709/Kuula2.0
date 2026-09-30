@@ -1,0 +1,384 @@
+{
+  "title": "Zahnarzt Abendsberg",
+  "company": "Zahnarzt Abendsberg",
+  "firstScene": "szene-01",
+  "autoRotate": -2,
+  "scenes": {
+    "szene-01": {
+      "title": "Ansicht 1",
+      "panorama": "szene-01.jpg",
+      "thumb": "szene-01-thumb.jpg",
+      "yaw": 8.59,
+      "pitch": -6.97,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-02",
+          "pitch": -24.0,
+          "yaw": 9.84,
+          "targetYaw": 179.4
+        }
+      ]
+    },
+    "szene-02": {
+      "title": "Ansicht 2",
+      "panorama": "szene-02.jpg",
+      "thumb": "szene-02-thumb.jpg",
+      "yaw": -90.0,
+      "pitch": 0.0,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-01",
+          "pitch": -37.18,
+          "yaw": -0.6,
+          "targetYaw": -170.16
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-03",
+          "pitch": -38.4,
+          "yaw": 170.43,
+          "targetYaw": -165.47
+        }
+      ]
+    },
+    "szene-03": {
+      "title": "Ansicht 3",
+      "panorama": "szene-03.jpg",
+      "thumb": "szene-03-thumb.jpg",
+      "yaw": -90.0,
+      "pitch": 0.0,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-02",
+          "pitch": -43.41,
+          "yaw": 14.53,
+          "targetYaw": -9.57
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-04",
+          "pitch": -36.28,
+          "yaw": -158.04,
+          "targetYaw": -123.76
+        }
+      ]
+    },
+    "szene-04": {
+      "title": "Ansicht 4",
+      "panorama": "szene-04.jpg",
+      "thumb": "szene-04-thumb.jpg",
+      "yaw": 89.7,
+      "pitch": -1.12,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-03",
+          "pitch": -46.77,
+          "yaw": 56.24,
+          "targetYaw": 21.96
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-05",
+          "pitch": -37.19,
+          "yaw": 130.82
+        }
+      ]
+    },
+    "szene-05": {
+      "title": "Ansicht 5",
+      "panorama": "szene-05.jpg",
+      "thumb": "szene-05-thumb.jpg",
+      "yaw": -142.02,
+      "pitch": 4.87,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-06",
+          "pitch": -40.48,
+          "yaw": -174.09,
+          "targetYaw": -171.93
+        }
+      ]
+    },
+    "szene-06": {
+      "title": "Ansicht 6",
+      "panorama": "szene-06.jpg",
+      "thumb": "szene-06-thumb.jpg",
+      "yaw": -154.52,
+      "pitch": -1.51,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-07",
+          "pitch": -29.03,
+          "yaw": 133.63,
+          "targetYaw": 148.28
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-13",
+          "pitch": -37.41,
+          "yaw": -75.07,
+          "targetYaw": 78.04
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-05",
+          "pitch": -45.26,
+          "yaw": 8.07,
+          "targetYaw": 5.91
+        }
+      ]
+    },
+    "szene-07": {
+      "title": "Ansicht 7",
+      "panorama": "szene-07.jpg",
+      "thumb": "szene-07-thumb.jpg",
+      "yaw": 89.98,
+      "pitch": 1.62,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-08",
+          "pitch": -39.63,
+          "yaw": 88.64,
+          "targetYaw": 63.7
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-06",
+          "pitch": -31.55,
+          "yaw": -31.72,
+          "targetYaw": -46.37
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-09",
+          "pitch": -40.65,
+          "yaw": 176.43,
+          "targetYaw": 5.21
+        }
+      ]
+    },
+    "szene-08": {
+      "title": "Ansicht 8",
+      "panorama": "szene-08.jpg",
+      "thumb": "szene-08-thumb.jpg",
+      "yaw": 13.89,
+      "pitch": -4.68,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-07",
+          "pitch": -38.29,
+          "yaw": -116.3,
+          "targetYaw": -91.36
+        }
+      ]
+    },
+    "szene-09": {
+      "title": "Ansicht 9",
+      "panorama": "szene-09.jpg",
+      "thumb": "szene-09-thumb.jpg",
+      "yaw": 138.67,
+      "pitch": -1.15,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-07",
+          "pitch": -37.23,
+          "yaw": -174.79,
+          "targetYaw": -3.57
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-10",
+          "pitch": -26.73,
+          "yaw": 85.58,
+          "targetYaw": 3.55
+        }
+      ]
+    },
+    "szene-10": {
+      "title": "Ansicht 10",
+      "panorama": "szene-10.jpg",
+      "thumb": "szene-10-thumb.jpg",
+      "yaw": 141.86,
+      "pitch": 0.81,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-09",
+          "pitch": -29.45,
+          "yaw": -176.45,
+          "targetYaw": -94.42
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-11",
+          "pitch": -34.98,
+          "yaw": -116.52,
+          "targetYaw": -67.77
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-12",
+          "pitch": -32.74,
+          "yaw": -57.5,
+          "targetYaw": 160.62
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-13",
+          "pitch": -24.04,
+          "yaw": 91.52,
+          "targetYaw": -156.94
+        }
+      ]
+    },
+    "szene-11": {
+      "title": "Ansicht 11",
+      "panorama": "szene-11.jpg",
+      "thumb": "szene-11-thumb.jpg",
+      "yaw": -90.0,
+      "pitch": 0.0,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-10",
+          "pitch": -36.39,
+          "yaw": 112.23,
+          "targetYaw": 63.48
+        }
+      ]
+    },
+    "szene-12": {
+      "title": "Ansicht 12",
+      "panorama": "szene-12.jpg",
+      "thumb": "szene-12-thumb.jpg",
+      "yaw": -90.0,
+      "pitch": 0.0,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-10",
+          "pitch": -38.13,
+          "yaw": -19.38,
+          "targetYaw": 122.5
+        }
+      ]
+    },
+    "szene-13": {
+      "title": "Ansicht 13",
+      "panorama": "szene-13.jpg",
+      "thumb": "szene-13-thumb.jpg",
+      "yaw": 95.46,
+      "pitch": 0.52,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-10",
+          "pitch": -31.27,
+          "yaw": 23.06,
+          "targetYaw": -88.48
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-14",
+          "pitch": -40.44,
+          "yaw": 75.12,
+          "targetYaw": -154.47
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-06",
+          "pitch": -48.04,
+          "yaw": -101.96,
+          "targetYaw": 104.93
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-15",
+          "pitch": -37.54,
+          "yaw": -168.09,
+          "targetYaw": -173.78
+        }
+      ]
+    },
+    "szene-14": {
+      "title": "Ansicht 14",
+      "panorama": "szene-14.jpg",
+      "thumb": "szene-14-thumb.jpg",
+      "yaw": -90.0,
+      "pitch": 0.0,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-13",
+          "pitch": -36.48,
+          "yaw": 25.53,
+          "targetYaw": -104.88
+        }
+      ]
+    },
+    "szene-15": {
+      "title": "Ansicht 15",
+      "panorama": "szene-15.jpg",
+      "thumb": "szene-15-thumb.jpg",
+      "yaw": -90.0,
+      "pitch": 0.0,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-13",
+          "pitch": -33.82,
+          "yaw": 6.22,
+          "targetYaw": 11.91
+        },
+        {
+          "type": "scene",
+          "sceneId": "szene-16",
+          "pitch": -48.56,
+          "yaw": 143.36,
+          "targetYaw": 131.37
+        }
+      ]
+    },
+    "szene-16": {
+      "title": "Ansicht 16",
+      "panorama": "szene-16.jpg",
+      "thumb": "szene-16-thumb.jpg",
+      "yaw": 101.53,
+      "pitch": 3.2,
+      "hfov": 120,
+      "hotSpots": [
+        {
+          "type": "scene",
+          "sceneId": "szene-15",
+          "pitch": -45.32,
+          "yaw": -48.63,
+          "targetYaw": -36.64
+        }
+      ]
+    }
+  }
+}

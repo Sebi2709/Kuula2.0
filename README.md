@@ -59,7 +59,8 @@ URL-Optionen für `view.html`:
 | `tour=<id>`      | Welche Tour (Pflicht)                    |
 | `scene=<id>`     | Startszene (alternativ `#scene=<id>`)    |
 | `title=0`        | Titel oben ausblenden                    |
-| `nav=0`          | Szenenleiste unten ausblenden            |
+| `nav=0`          | Szenenleiste unten ganz ausblenden       |
+| `thumbs=1`       | Szenenleiste aufgeklappt starten         |
 | `autorotate=0`   | Auto-Rotation aus (oder z. B. `-3`)      |
 
 ## Hosting (kostenlos)
@@ -74,10 +75,17 @@ lassen, Output-Verzeichnis `/`. Limit: 25 MB pro Datei – bei 8192×4096-JPEGs 
 
 Eigene Domain (z. B. `rundgang.firma-a.de`) lässt sich bei beiden kostenlos hinterlegen.
 
-## Panoramen aus Kuula holen
+## Touren aus Kuula importieren
 
-In Kuula kannst du bei deinen Fotos das Original herunterladen. Die Hotspots musst
-du im Editor einmal neu setzen – das geht pro Szene in wenigen Minuten.
+Öffentliche Kuula-Collections lassen sich komplett übernehmen – Panoramen (8192 px),
+Reihenfolge, Startblick, Szenen-Links und Boden-Logos:
+
+```bash
+pip install pillow numpy   # nur nötig, wenn die Tour Boden-Sticker hat
+python3 tools/import_kuula.py "https://kuula.co/share/collection/7M5G6" --company "Firma A"
+```
+
+Die Tour landet in `tours/<id>/` und wird in `tours/index.json` eingetragen.
 
 ## Tipps zur Bildgröße
 

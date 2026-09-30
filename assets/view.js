@@ -5,6 +5,7 @@ import { loadTour, buildViewerConfig, escapeHtml } from './tour.js';
 //   scene=<id>       Startszene (auch per #scene=<id>)
 //   title=0          Titel ausblenden
 //   nav=0            Szenenleiste ausblenden
+//   thumbs=1         Szenenleiste aufgeklappt starten
 //   autorotate=<n>   Auto-Rotation überschreiben (0 = aus)
 const params = new URLSearchParams(location.search);
 const hash = new URLSearchParams(location.hash.slice(1));
@@ -43,21 +44,49 @@ async function main() {
 
   const sceneIds = Object.keys(tour.scenes || {});
   const nav = document.getElementById('scenes');
+  const list = document.createElement('div');
+  list.className = 'scene-list';
   if (sceneIds.length > 1 && params.get('nav') !== '0') {
+    const hasThumbs = sceneIds.some((id) => tour.scenes[id].thumb);
+    nav.classList.toggle('with-thumbs', hasThumbs);
     for (const id of sceneIds) {
+      const scene = tour.scenes[id];
       const btn = document.createElement('button');
-      btn.textContent = tour.scenes[id].title || id;
       btn.dataset.scene = id;
+      btn.title = scene.title || id;
+      if (hasThumbs && scene.thumb) {
+        const img = document.createElement('img');
+        img.src = base + scene.thumb;
+        img.alt = scene.title || id;
+        img.loading = 'lazy';
+        btn.append(img);
+      } else {
+        btn.textContent = scene.title || id;
+      }
       btn.addEventListener('click', () => {
         if (viewer.getScene() !== id) viewer.loadScene(id);
       });
-      nav.append(btn);
+      list.append(btn);
     }
+    const toggle = document.createElement('button');
+    toggle.className = 'scene-toggle';
+    toggle.setAttribute('aria-label', 'Ansichten ein-/ausblenden');
+    const setOpen = (open) => {
+      nav.classList.toggle('collapsed', !open);
+      toggle.textContent = open ? '▾' : '▴ Ansichten';
+    };
+    toggle.addEventListener('click', () => setOpen(nav.classList.contains('collapsed')));
+    setOpen(params.get('thumbs') === '1');
+    nav.append(toggle, list);
     nav.hidden = false;
   }
 
   const markCurrent = (id) => {
-    for (const btn of nav.children) btn.classList.toggle('current', btn.dataset.scene === id);
+    for (const btn of list.children) {
+      const current = btn.dataset.scene === id;
+      btn.classList.toggle('current', current);
+      if (current) btn.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    }
     history.replaceState(null, '', `#scene=${encodeURIComponent(id)}`);
   };
   markCurrent(config.default.firstScene);

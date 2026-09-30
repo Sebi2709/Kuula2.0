@@ -357,6 +357,7 @@ async function openTour(id) {
   for (const scene of Object.values(tour.scenes)) {
     scene.hotSpots ||= [];
     state.images.set(scene.panorama, { url: `tours/${id}/${scene.panorama}` });
+    if (scene.thumb) state.images.set(scene.thumb, { url: `tours/${id}/${scene.thumb}` });
   }
   state.tour = tour;
   state.loadedId = id;
@@ -374,6 +375,7 @@ function cleanTourJson() {
     scenes[id] = {
       title: s.title,
       panorama: s.panorama,
+      ...(s.thumb && { thumb: s.thumb }),
       yaw: round(s.yaw ?? 0),
       pitch: round(s.pitch ?? 0),
       hfov: round(s.hfov ?? 100),
@@ -382,6 +384,7 @@ function cleanTourJson() {
         .map((hs) => {
           const out = { type: hs.type, pitch: hs.pitch, yaw: hs.yaw };
           if (hs.type === 'scene') out.sceneId = hs.sceneId;
+          if (hs.targetYaw !== undefined) out.targetYaw = hs.targetYaw;
           if (hs.text) out.text = hs.text;
           if (hs.url) out.url = hs.url;
           return out;
@@ -422,7 +425,7 @@ async function exportZip() {
   if (!id) return;
   toast('ZIP wird erstellt …');
   const files = [{ name: `tours/${id}/tour.json`, data: JSON.stringify(cleanTourJson(), null, 2) + '\n' }];
-  const used = new Set(Object.values(state.tour.scenes).map((s) => s.panorama));
+  const used = new Set(Object.values(state.tour.scenes).flatMap((s) => [s.panorama, s.thumb].filter(Boolean)));
   for (const name of used) {
     const img = state.images.get(name);
     let blob = img?.blob;
