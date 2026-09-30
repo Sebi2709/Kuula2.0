@@ -3,7 +3,7 @@ import { loadTour, buildViewerConfig, escapeHtml } from './tour.js';
 // URL-Parameter:
 //   tour=<id>        Pflicht
 //   scene=<id>       Startszene (auch per #scene=<id>)
-//   title=0          Titel ausblenden
+//   title=1          Tour-Titel oben einblenden
 //   nav=0            Szenenleiste ausblenden
 //   thumbs=1         Szenenleiste aufgeklappt starten
 //   autorotate=<n>   Auto-Rotation überschreiben (0 = aus)
@@ -36,7 +36,7 @@ async function main() {
   const config = buildViewerConfig(tour, (file) => base + file, overrides);
   const viewer = pannellum.viewer('pano', config);
 
-  if (tour.title && params.get('title') !== '0') {
+  if (tour.title && params.get('title') === '1') {
     const el = document.getElementById('title');
     el.textContent = tour.title;
     el.hidden = false;

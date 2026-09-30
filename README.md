@@ -58,7 +58,7 @@ URL-Optionen für `view.html`:
 | ---------------- | ---------------------------------------- |
 | `tour=<id>`      | Welche Tour (Pflicht)                    |
 | `scene=<id>`     | Startszene (alternativ `#scene=<id>`)    |
-| `title=0`        | Titel oben ausblenden                    |
+| `title=1`        | Tour-Titel oben einblenden               |
 | `nav=0`          | Szenenleiste unten ganz ausblenden       |
 | `thumbs=1`       | Szenenleiste aufgeklappt starten         |
 | `autorotate=0`   | Auto-Rotation aus (oder z. B. `-3`)      |
